@@ -3,6 +3,41 @@
   padding: 0;
   box-sizing: border-box;
 }
-.logo{
-    width:100px;
+.logo {
+  width: 100px;
 }
+h1 {
+  text-align: center;
+}
+h5 {
+  background-color: rgba(13, 14, 14, 0.527);
+  border-radius: 20px;
+  text-align: center;
+}
+
+p {
+  border-radius: 10px;
+  text-align: center;
+}
+.pcarr {
+  background-color: rgba(13, 14, 14, 0.527);
+}
+.card-body {
+  background-color: rgba(208, 243, 151, 0.993);
+}
+.card-title {
+  background: none;
+}
+.detailsprice{
+    height: 10vh;
+    align-items: center;
+    border: solid;
+}
+.card-img-top{
+    height:20vh;
+}
+.checked{
+    width: 70vw;
+    border: solid;
+}
+
