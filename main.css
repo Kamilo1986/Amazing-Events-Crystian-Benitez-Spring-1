@@ -17,17 +17,16 @@ h5 {
 .pcarr {
   background-color: rgba(13, 14, 14, 0.527);
 }
-#checked{
- 
-  width:150vw;
+#checked {
+  width: 150vw;
 }
-#flexCheckChecked{
-  width:30px;
-  height:30px;
+#flexCheckChecked {
+  width: 20px;
+  height: 20px;
 }
-.lupa{
-  width:30px;
-  height:20px;
+.lupa {
+  width: 30px;
+  height: 20px;
 }
 .card-body {
   background-color: rgba(233, 238, 226, 0.993);
@@ -35,26 +34,27 @@ h5 {
 .card-title {
   background: none;
 }
-
-.card-img-top {
-  height:20vh;
+.card-text{
+ 
+  height:100px;
 }
-.detailsprice{
-  border: solid;
+.btn {
+  height:40px;
+}
+.card-img-top {
+  height: 20vh;
 }
 .dfooter {
   height: 10vh;
-   background-color: rgba(233, 238, 226, 0.993);
+  background-color: rgba(233, 238, 226, 0.993);
 }
-.social{
-  width:2vw;
+.social {
+  width: 2vw;
 }
-.submitf{
+.submitf {
   width: 48.5vw;
 }
-#tabla{
-  border:solid;
-  width:94vw;
-  }
-  
-  
+#tabla {
+  border: solid;
+  width: 94vw;
+}
