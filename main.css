@@ -1,60 +1,38 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box;  
+  
 }
-ul {
-  width: 35vw;
-  margin-left: 500px;
-  height: 10vh;
-}
-.carousel-item {
-  height: 80vh;
-}
+
 h5 {
   background-color: rgba(13, 14, 14, 0.527);
 }
-.pcarr {
+ul{
+  height:80px;
+}
+.pcarr{
   background-color: rgba(13, 14, 14, 0.527);
 }
-#checked {
-  width: 150vw;
+
+.lupa{
+ width:1.5vw ;
+ height:1.5vh;
 }
-#flexCheckChecked {
-  width: 20px;
-  height: 20px;
-}
-.lupa {
-  width: 30px;
-  height: 20px;
-}
-.card-body {
-  background-color: rgba(233, 238, 226, 0.993);
-}
-.card-title {
-  background: none;
-}
-.card-text{
- 
-  height:100px;
-}
+
 .btn {
-  height:40px;
+  height: 40px;
 }
 .card-img-top {
   height: 20vh;
 }
 .dfooter {
-  height: 10vh;
   background-color: rgba(233, 238, 226, 0.993);
 }
 .social {
   width: 2vw;
 }
-.submitf {
-  width: 48.5vw;
-}
 #tabla {
   border: solid;
-  width: 94vw;
+  
 }
