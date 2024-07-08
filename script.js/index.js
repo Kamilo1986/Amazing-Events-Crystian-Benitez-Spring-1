@@ -1,9 +1,4 @@
- 
 
-
-
-
-let date = documen.
 const data = {
     currentDate: "2023-01-01",
     events: [
@@ -212,15 +207,10 @@ const data = {
     </div>
     `
     generalcard.appendChild(card);
-  /* id: "639c723b992482e5f2834be9",
-        name: "Collectivities Party",
-        image: "https://i.postimg.cc/Fs03hQDt/Collectivities-Party.jpg",
-        date: "2022-12-12",
-        description:
-          "Enjoy your favourite dishes, from different countries, in a unique event for the whole family.",
-        category: "Food Fair",
-        place: "Room A",
-        capacity: 45000,
-        assistance: 42756,
-        price: 5,
-        __v: 0, */
+  
+
+
+    document.createElement("div");
+    div.src = "https://i.postimg.cc/fyLqZY9K/10-K-for-life.jpg";
+    div.alt = "10K for life";
+    document.appendChild(div);
