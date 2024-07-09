@@ -1,7 +1,4 @@
-
-const data = {
-    currentDate: "2023-01-01",
-    events: [
+let cardData = [
       {
         _id: "639c723b992482e5f2834be9",
         name: "Collectivities Party",
@@ -192,25 +189,77 @@ const data = {
         estimate: 9000,
         price: 250,
         __v: 0,
-      },
-    ],
-  }; 
-  
-  const generalcard = document.querySelector("#generalcard");   
+      }
+    ];
+
+    let cardContainer = document.getElementById('card-container');
+    function createCard(cardData) {
+    let card = document.createElement('div');
+    card.className = 'card';
     
-    const card = document.createElement("div");
-    card.hinnerhtml = `
-    img src="${card.image}" alt="event" class="card-img-top"
-    <div class="card-body">
-    <h5 class="card-title">${card.name}</h5>
-    <p class="card-text">${card.description}</p>
-    </div>
-    `
-    generalcard.appendChild(card);
+    let cardid = document.createElement('p');
+    cardid.textContent = cardData._id;
+    card.appendChild(cardid);
+    
+    let cardTitle = document.createElement('h2');
+    cardTitle.textContent = cardData.name;
+    card.appendChild(cardTitle);
+
+    let cardImage = document.createElement('img');
+    cardImage.src = cardData.image;
+    card.appendChild(cardImage);
+
+    let carddate = document.createElement('p');
+    carddate.textContent = cardData.date;
+    card.appendChild(carddate);
+    
+    let cardContent = document.createElement('p');
+    cardContent.textContent = cardData.description;
+    card.appendChild(cardContent);
+
+    let cardCategory = document.createElement('p');
+    cardCategory.textContent = cardData.category;
+    card.appendChild(cardCategory);
+
+    let cardPlace = document.createElement('p');
+    cardPlace.textContent = cardData.place; 
+    card.appendChild(cardPlace);
+    
+    let cardCapacity = document.createElement('p');
+    cardCapacity.textContent = cardData.capacity;
+    card.appendChild(cardCapacity);
+
+    let cardAssistance = document.createElement('p');
+    cardAssistance.textContent = cardData.assistance;
+    card.appendChild(cardAssistance);
+    
+    let cardPrice = document.createElement('p');
+    cardPrice.textContent = cardData.price;
+    card.appendChild(cardPrice);
+
+    let cardEstimate = document.createElement('p');
+    cardEstimate.textContent = cardData.estimate;
+    card.appendChild(cardEstimate); 
+
+    let __v = document.createElement('a');
+    __v.textContent = cardData.__v;
+    card.appendChild(__v);
   
 
+    cardContainer.appendChild(card);  
+  } 
 
-    document.createElement("div");
-    div.src = "https://i.postimg.cc/fyLqZY9K/10-K-for-life.jpg";
-    div.alt = "10K for life";
-    document.appendChild(div);
+
+    
+cardData.forEach(data => {
+  createCard(data);
+});
+
+
+
+
+   
+ 
+
+ 
+ 

@@ -13,6 +13,10 @@ h5 {
   width: 100%;
 
 }
+.imagencarr2{
+  height: 40vh;
+  width: 30%;
+}
 .card-title{
   height:4vh; 
 }
@@ -53,4 +57,8 @@ ul{
 #tabla {
   border: solid;
   
+}
+#card-container{
+
+  width: 20vw;
 }
