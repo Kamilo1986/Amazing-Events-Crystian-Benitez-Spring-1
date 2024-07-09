@@ -1,4 +1,4 @@
-let cardData = [
+let Cards = [
     {
       _id: "639c723b992482e5f2834be9",
       name: "Collectivities Party",
@@ -191,65 +191,66 @@ let cardData = [
       __v: 0,
     }
   ];
-
-  let cardContainer = document.getElementById('card-container');
-  function createCard(cardData) {
+  let cardCont = document.getElementById('cardCont');
+  function createCard(Cards) {
   let card = document.createElement('div');
   card.className = 'card';
   
   let cardid = document.createElement('p');
-  cardid.textContent = cardData._id;
+  cardid.textContent = Cards._id;
   card.appendChild(cardid);
   
   let cardTitle = document.createElement('h2');
-  cardTitle.textContent = cardData.name;
+  cardTitle.textContent = Cards.name;
   card.appendChild(cardTitle);
-
+  
   let cardImage = document.createElement('img');
-  cardImage.src = cardData.image;
+  cardImage.src = Cards.image;
   card.appendChild(cardImage);
-
+  
   let carddate = document.createElement('p');
-  carddate.textContent = cardData.date;
+  carddate.textContent = Cards.date;
   card.appendChild(carddate);
   
   let cardContent = document.createElement('p');
-  cardContent.textContent = cardData.description;
+  cardContent.textContent = Cards.description;
   card.appendChild(cardContent);
-
+  
   let cardCategory = document.createElement('p');
-  cardCategory.textContent = cardData.category;
+  cardCategory.textContent = Cards.category;
   card.appendChild(cardCategory);
-
+  
   let cardPlace = document.createElement('p');
-  cardPlace.textContent = cardData.place; 
+  cardPlace.textContent = Cards.place; 
   card.appendChild(cardPlace);
   
   let cardCapacity = document.createElement('p');
-  cardCapacity.textContent = cardData.capacity;
+  cardCapacity.textContent = Cards.capacity;
   card.appendChild(cardCapacity);
-
+  
   let cardAssistance = document.createElement('p');
-  cardAssistance.textContent = cardData.assistance;
+  cardAssistance.textContent = Cards.assistance;
   card.appendChild(cardAssistance);
   
   let cardPrice = document.createElement('p');
-  cardPrice.textContent = cardData.price;
+  cardPrice.textContent = Cards.price;
   card.appendChild(cardPrice);
-
+  
   let cardEstimate = document.createElement('p');
-  cardEstimate.textContent = cardData.estimate;
+  cardEstimate.textContent = Cards.estimate;
   card.appendChild(cardEstimate); 
-
+  
   let __v = document.createElement('a');
-  __v.textContent = cardData.__v;
+  __v.textContent = Cards.__v;
   card.appendChild(__v);
-
-
-  cardContainer.appendChild(card);  
-} 
-
-cardData.forEach(data => {
-createCard(data);
-});
-
+  
+  cardCont.appendChild(card);
+ }
+ let futuro = new Date("2023-01-01");
+  Cards.forEach(data => {
+  let Cards = new Date(data.date);
+  if (Cards < futuro) 
+  createCard(data);
+  });
+  
+  

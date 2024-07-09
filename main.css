@@ -58,7 +58,9 @@ ul{
   border: solid;
   
 }
-#card-container{
-
-  width: 20vw;
+#cardCont{
+width:100%;
 }
+
+
+
