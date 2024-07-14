@@ -1,4 +1,5 @@
-let Cards = [
+
+const CardsData = [
     {
       _id: "639c723b992482e5f2834be9",
       name: "Collectivities Party",
@@ -190,67 +191,43 @@ let Cards = [
       price: 250,
       __v: 0,
     }
-  ];
-  let cardCont = document.getElementById('cardCont');
-  function createCard(Cards) {
-  let card = document.createElement('div');
-  card.className = 'card';
-  
-  let cardid = document.createElement('p');
-  cardid.textContent = Cards._id;
-  card.appendChild(cardid);
-  
-  let cardTitle = document.createElement('h2');
-  cardTitle.textContent = Cards.name;
-  card.appendChild(cardTitle);
-  
-  let cardImage = document.createElement('img');
-  cardImage.src = Cards.image;
-  card.appendChild(cardImage);
-  
-  let carddate = document.createElement('p');
-  carddate.textContent = Cards.date;
-  card.appendChild(carddate);
-  
-  let cardContent = document.createElement('p');
-  cardContent.textContent = Cards.description;
-  card.appendChild(cardContent);
-  
-  let cardCategory = document.createElement('p');
-  cardCategory.textContent = Cards.category;
-  card.appendChild(cardCategory);
-  
-  let cardPlace = document.createElement('p');
-  cardPlace.textContent = Cards.place; 
-  card.appendChild(cardPlace);
-  
-  let cardCapacity = document.createElement('p');
-  cardCapacity.textContent = Cards.capacity;
-  card.appendChild(cardCapacity);
-  
-  let cardAssistance = document.createElement('p');
-  cardAssistance.textContent = Cards.assistance;
-  card.appendChild(cardAssistance);
-  
-  let cardPrice = document.createElement('p');
-  cardPrice.textContent = Cards.price;
-  card.appendChild(cardPrice);
-  
-  let cardEstimate = document.createElement('p');
-  cardEstimate.textContent = Cards.estimate;
-  card.appendChild(cardEstimate); 
-  
-  let __v = document.createElement('a');
-  __v.textContent = Cards.__v;
-  card.appendChild(__v);
-  
-  cardCont.appendChild(card);
- }
- let futuro = new Date("2023-01-01");
-  Cards.forEach(data => {
-  let Cards = new Date(data.date);
-  if (Cards < futuro) 
-  createCard(data);
+  ]; 
+
+  const contenedor = document.getElementById('contenedor');
+  let fechaActual = new Date("2023-01-01");
+  let eventosPasados = CardsData.filter(evento => {
+    let fechaEvento = new Date(evento.date);
+    return fechaEvento < fechaActual;
+    
+  });
+
+  eventosPasados.forEach(evento => {
+    const divTarjeta = document.createElement('div');
+  divTarjeta.innerHTML = `
+
+  <div class="card h-100 ">
+  <div class="card-header">
+    <p><span>Id:</span> ${evento._id}</p>
+    <img class="card-img-top" src="${evento.image}" alt="${evento.name}"> 
+ </div>
+    <div class="card-body">
+            <h2 class="card-title badge text-bg-primary text-wrap d-flex justify-content-center align-items-center">${evento.name}</h2>
+            <p class="card-text"><span >Date:</span> ${evento.date}</p>
+            <p class="card-text"><span >Description:</span> ${evento.description}</p>
+            <p class="card-text"><span >Category:</span> ${evento.category}</p>
+            <p class="card-text"><span >place:</span> ${evento.place}</p>
+            <p class="card-text"><span >Capacity:</span> ${evento.capacity}</p
+            <p class="card-text"><span >Estimate:</span> ${evento.estimate}</p>
+            <p class="card-text"><span >Assistance:</span> ${evento.assistance}</p>
+    </div>   
+        <div class="detailsprice d-flex flex-row-reverse justify-content-around align-items-end">
+            <a href="Details.html" class="btn btn-primary">Details</a>
+            <h6 class="h6 d-flex align-items-center">$ ${evento.price}</h6>
+        </div>
+    
+</div>
+    `; 
+    contenedor.appendChild(divTarjeta);
   });
   
   

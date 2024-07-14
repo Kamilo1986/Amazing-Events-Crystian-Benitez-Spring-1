@@ -13,42 +13,48 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-md bg-body-tertiary d-flex justify-content-evenly border ">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
             <div class="container-fluid ">
-                <div>
-                    <a href="../index.html">
-                        <img src="../imagenes/amazing_brand.png" alt="logo" class="logo w-50  ">
-                    </a>
-                </div>
-                <div class="navbar-expand-sm bg-body-tertiary ">
-                    <ul class="mb-lg-0 d-flex  w-100 ">
-                        <li class=" border rounded-start-pill d-flex align-items-center">
+                <a href="#">
+                    <img src="../imagenes/amazing_brand.png" alt="logo" class=" img-fluid  " id="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+                    <ul class=" navbar-Nav d-flex " id="navcontainer">
+                        <li
+                            class=" nav-item lin border rounded-start-circle d-flex justify-content-center  align-items-center flex-item  mx-2">
                             <a class="nav-link active" aria-current="page" href="#">HOME</a>
                         </li>
                         <li
-                            class="nav-item border rounded-1 ms-4 d-flex justify-content-center align-items-center text-center">
-                            <a class=" nav-link active  mx-3 w-75" aria-current="page"
-                                href="/page/UpcomingEvents.html">UPCOMING EVENTS</a>
-                        </li>
-                        <li
-                            class="nav-item border rounded-1 ms-4 d-flex justify-content-center align-items-center text-center">
-                            <a class="nav-link active  mx-2 w-75" aria-current="page" href="/page/PastEvents.html">PAST
+                            class=" nav-item  lin border rounded-1  d-flex justify-content-center  align-items-center  mx-2 ">
+                            <a class=" nav-link text-center w-75" aria-current="page"
+                                href="/page/UpcomingEvents.html">UPCOMING
                                 EVENTS</a>
                         </li>
-                        <li class="nav-item border rounded-1 ms-4 d-flex align-items-center">
-                            <a class="nav-link active" aria-current="page" href="/page/Contact.html">CONTACT</a>
+                        <li
+                            class=" nav-item lin border rounded-1 d-flex justify-content-center align-items-center  mx-2  ">
+                            <a class="nav-link text-center w-75  " aria-current="page" href="/page/PastEvents.html">PAST
+                                EVENTS</a>
                         </li>
-                        <li class="nav-item border  rounded-1 ms-4 d-flex align-items-center">
-                            <a class="nav-link active" aria-current="page" href="/page/Stats.html">STATS</a>
+                        <li
+                            class=" nav-item lin border rounded-1 d-flex justify-content-center  align-items-center  mx-2">
+                            <a class="nav-link " aria-current="page" href="/page/Contact.html">CONTACT</a>
                         </li>
-                        <li class="nav-item border  rounded-end-circle ms-4 d-flex align-items-center">
-                            <a class="nav-link active" aria-current="page" href="/page/Details.html">DETAILS</a>
+                        <li
+                            class=" nav-item lin border  rounded-1 d-flex justify-content-center  align-items-center  mx-2 ">
+                            <a class="nav-link " aria-current="page" href="/page/Stats.html">STATS</a>
+                        </li>
+                        <li
+                            class=" nav-item lin border rounded-end-circle d-flex  justify-content-center align-items-center  mx-2  ">
+                            <a class="nav-link " aria-current="page" href="/page/Details.html">DETAILS</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
     </header>
     <main>
         <div id="carouselExampleCaptions" class=" container carousel slide">
@@ -96,85 +102,76 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <div class=" container-fluid d-flex ">
-            <div class=" container-fluid d-flex justify-content-evenly mt-5 mb-5 ">
-
-                <div class=" checked container-fluidcard  d-flex align-items-center ">
-                    <input class="form-check-input " type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class=" container-fluid form-check-label fs-6 ms-2" for="flexCheckChecked">
-                        Food fair
-                    </label>
-
-                </div>
-                <div class=" container-fluidcard d-flex  align-items-center ">
-                    <input class="form-check-input" type="checkbox" value="" checked>
-                    <label class="container-fluid form-check-label fs-6 ms-2" for="flexCheckChecked">
-                        Museum
-                    </label>
-                </div>
-                <div class=" container-fluidcard d-flex  align-items-center">
-                    <input class="form-check-input" type="checkbox" value="" checked>
-                    <label class=" container-fluid form-check-label fs-6 ms-2" for="flexCheckChecked">
-                        Costume Party
-                    </label>
-                </div>
-                <div class=" container-fluidcard d-flex  align-items-center">
-                    <input class="form-check-input" type="checkbox" value="" checked>
-                    <label class=" container-fluid form-check-label fs-6 ms-2" for="flexCheckChecked">
-                        Music Concert
-                    </label>
-
-                </div>
-                <div class=" container-fluidcard d-flex  align-items-center">
-                    <input class="form-check-input " type="checkbox" value="checkbox" checked>
-                    <label class="container-fluid form-check-label fs-6 ms-2" for="flexCheckChecked">
-                        Category
-                    </label>
-                </div>
-                <div class=" container-fluidcard d-flex ms-5">
-                    <input class="container-fluid " type="text" placeholder="Buscar">
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                            class="bi bi-search" viewBox="0 0 16 16">
+        <div class=" navbar navbar-expand-sm bg-body-tertiary d-flex justify-content-evenly mt-5 ">
+            <div>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Food fair
+                </label>
+            </div>
+            <div>
+                <input class="form-check-input" type="checkbox" value="" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Museum
+                </label>
+            </div>
+            <div>
+                <input class="form-check-input" type="checkbox" value="" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Costume Party
+                </label>
+            </div>
+            <div>
+                <input class="form-check-input" type="checkbox" value="" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Music Concert
+                </label>
+            </div>
+            <div>
+                <input class="form-check-input" type="checkbox" value="checkbox" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Category
+                </label>
+            </div>
+            <form class="d-flex ">
+                <div class="container-fluid d-flex">
+                    <input class="form-control w-100 " type="text" placeholder="Buscar">
+                    <button class=" d-flex align-items-center ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-search w-75"
+                            viewBox="0 0 16 16">
                             <path
                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                         </svg>
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
-
+        <div id="contenedor"
+            class=" row row-cols-1 row-cols-ms-2 row-cols-md-3 row-cols-lg-5 ps-4 mt-5 mb-5 gap-5 d-flex justify-content-evenly w-100 ">
+        </div>
     </main>
-    
-    <div id="cardCont" class= "row row-cols-2 row-cols-lg-5 g-2 g-lg-3"></div>
     <footer>
-
-        <div class="dfooter d-flex ">
-            <div class="d-flex justify-content-evenly align-items-center w-50" style="height:10vh;">
-
-                <a href="https://www.facebook.com/?locale=es_LA "><img class="social rounded-circle "
+        <div class=" dfooter container-fluid d-flex justify-content-around align-items-center border w-100">
+            <div class=" d-flex justify-content-evenly align-items-center w-50">
+                <a href="https://www.facebook.com/?locale=es_LA "><img class="social img-fluid rounded-circle "
                         src="../imagenes/facebook.png" alt="logo facebook"> </a>
-                <a href="https://www.instagram.com/"><img class="social rounded-circle" src="../imagenes/instagram.png"
-                        alt="instagram"></a>
-                <a href="https://web.whatsapp.com/"><img class="social rounded-circle" src="../imagenes/whatsapp.png"
-                        alt=" logo whatsapp"></a>
+                <a href="https://www.instagram.com/"><img class="social img-fluid rounded-circle "
+                        src="../imagenes/instagram.png" alt="instagram"></a>
+                <a href="https://web.whatsapp.com/"><img class="social img-fluid rounded-circle "
+                        src="../imagenes/whatsapp.png" alt=" logo whatsapp"></a>
             </div>
-
-            <div class=" d-flex justify-content-around align-items-center w-50  " style="height:10vh;">
-                <p>2024 © by Crystian Camilo Benitez</p>
-                <p> COHORT IV </p>
+            <div class=" d-flex justify-content-end   w-50">
+                <p class=" mt-3">2024 © by Crystian Camilo Benitez COHORT IV</p>
             </div>
         </div>
     </footer>
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="../scripts/index.js"></script>
-   
-    
+
+
+
 </body>
 
 </html>

@@ -1,66 +1,89 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;  
- outline: auto;
+  box-sizing: border-box;
 }
-
+#logo {
+  height: 7vh;
+}
 h5 {
-  background-color: rgba(13, 14, 14, 0.527); 
-}
-.imagencarr{
-  height: 40vh;
-  width: 100%;
-
-}
-.imagencarr2{
-  height: 40vh;
-  width: 30%;
-}
-.card-title{
-  height:4vh; 
-}
-.text-center2{
-  height:15vh;
-  text-align: center;
-}
-.text-centerdos{
-  height:6vh;
-}
-.card-img-top{
-  
-  height: 20vh;
-}
-.container-fluidcard{
- width:20vw;
-}
-
-ul{
-  height:80px;
-}
-.pcarr{
   background-color: rgba(13, 14, 14, 0.527);
 }
-
+.lin {
+  height: 5vh;
+}
+.imagencarr {
+  height: 40vh;
+  width: 100%;
+}
+.imagencarr2 {
+  height:50vh;
+  width: 100%;
+}
+.card-title {
+  height: 4vh;
+}
+.bi.bi-search {
+  width: 3vw;
+  height: 3vh;
+}
+.pcarr {
+  background-color: rgba(13, 14, 14, 0.527);
+}
 .btn {
   height: 40px;
 }
 .card-img-top {
   height: 20vh;
 }
-.dfooter {
-  background-color: rgba(233, 238, 226, 0.993);
-}
 .social {
   width: 2vw;
 }
+.dfooter {
+  height: 10vh;
+}
 #tabla {
   border: solid;
-  
 }
-#cardCont{
-width:100%;
+@media (max-width: 320px) {
+  .social {
+    width: 10vw;
+  }
+  #pfooter {
+    font-size: 0.6rem;
+  }
+  #navcontainer {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+  }
+  .nav-item {
+    border-radius: 10rem;
+    margin-top: 10px;
+  }
 }
-
-
-
+@media (max-width: 375px) {
+  #navcontainer {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+  }
+  .nav-item {
+    border-radius: 10rem;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 426px) {
+  #navcontainer {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+  }
+  .nav-item {
+    border-radius: 10rem;
+    margin-top: 10px;
+  }
+}
