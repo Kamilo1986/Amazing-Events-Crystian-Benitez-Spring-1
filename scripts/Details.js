@@ -1,4 +1,3 @@
-
 const CardsData = [
     {
       _id: "639c723b992482e5f2834be9",
@@ -15,7 +14,7 @@ const CardsData = [
       __v: 0,
     },
     {
-      _id: "639c723b992482e5f2834beb",
+      _id:"639c723b992482e5f2834beb",
       name: "Korean style",
       image: "https://i.postimg.cc/ZmD3Xf57/Korean-style.jpg",
       date: "2023-08-12",
@@ -191,130 +190,43 @@ const CardsData = [
       price: 250,
       __v: 0,
     }
-  ]; 
+  ];
+  
 
-  const opciones = ['Food Fair', 'Museum', 'Costume Party', 'Music Concert', 'Category'];
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventId = urlParams.get('id');
 
-// Generar dinámicamente los checkboxes
-const checkboxContainer = document.getElementById('checkbox-container');
-opciones.forEach((opcion, index) => {
-    checkboxContainer.innerHTML += `
-        <label class="form-check form-check-inline">
-            <input type="checkbox" class="form-check-input" id="flexCheckChecked${index + 1}" value="${opcion}">
-            <span class="form-check-label">${opcion}</span>
-        </label>
-    `;
-});
+    // Lógica para obtener y mostrar los detalles del evento con el eventId
+    const eventoDetalle = CardsData.find(evento => evento._id === eventId);
 
-// Formulario de búsqueda
-const FormDeBusqueda = `
-    <form id="search-form" class="search-form">
-        <div class="d-flex justify-content-end" id="search-container">
-            <input type="text" name="search" id="search-input" placeholder="Buscar" class="form-control">
-            <button type="submit">
-                <img src="../imagenes/search.svg" alt="Lupa">
-            </button>
-            <button type="button" id="clear-button">Limpiar</button>
-        </div>
-    </form>
-`;
-checkboxContainer.insertAdjacentHTML('afterend', FormDeBusqueda);
-
-// Función para limpiar el campo de búsqueda y mostrar todas las tarjetas
-document.getElementById('clear-button').addEventListener('click', () => {
-    document.getElementById('search-input').value = '';
-    pintarTodasLasTarjetas(CardsData);
-});
-
-// Función para filtrar eventos por nombre
-function filtrarPorNombre(searchTerm) {
-    searchTerm = searchTerm.toLowerCase().trim();
-    return CardsData.filter(evento => evento.name.toLowerCase().includes(searchTerm));
-}
-
-// Función para pintar todas las tarjetas
-function pintarTodasLasTarjetas(data) {
-    const contenedor2 = document.getElementById('contenedor2');
-    contenedor2.innerHTML = ''; // Limpiar contenido previo
-
-    data.forEach(evento => {
-        const divTarjeta = document.createElement('div');
-        divTarjeta.classList.add('card',);
-        divTarjeta.innerHTML = `
-            <div class="card-header">
-               
-                <img class="card-img-top" src="${evento.image}" alt="${evento.name}">
+    if (eventoDetalle) {
+        // Mostrar los detalles del evento encontrado
+        const detalleEventoContainer = document.getElementById('detalle-evento');
+        detalleEventoContainer.innerHTML = `
+            <div class="card">
+                <div class="card-header">
+                   
+                    <img class="card-img-top" src="${eventoDetalle.image}" alt="${eventoDetalle.name}">
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title badge text-bg-primary text-wrap d-flex justify-content-center align-items-center">${eventoDetalle.name}</h2>
+                    <p class="card-text"><span>Date:</span> ${eventoDetalle.date}</p>
+                    <p class="card-text"><span>Description:</span> ${eventoDetalle.description}</p>
+                    <p class="card-text"><span>Category:</span> ${eventoDetalle.category}</p>
+                    <p class="card-text"><span>Place:</span> ${eventoDetalle.place}</p>
+                    <p class="card-text"><span>Capacity:</span> ${eventoDetalle.capacity}</p>
+                    <p class="card-text"><span>Estimate:</span> ${eventoDetalle.estimate || 'undefined'}</p>
+                    <p class="card-text"><span>Assistance:</span> ${eventoDetalle.assistance || 'undefined'}</p>
+                </div>
+                <div class="detailsprice d-flex flex-row-reverse justify-content-around align-items-end">
+                    <h6 class="h6 d-flex align-items-center">$ ${eventoDetalle.price}</h6>
+                </div>
             </div>
-            <div class="card-body">
-                <h2 class="card-title badge text-bg-primary text-wrap d-flex justify-content-center align-items-center">${evento.name}</h2>
-                <p class="card-text"><span>Date:</span> ${evento.date}</p>
-                <p class="card-text"><span>Description:</span> ${evento.description}</p>
-                <p class="card-text"><span>Category:</span> ${evento.category}</p>
-                <p class="card-text"><span>Place:</span> ${evento.place}</p>
-                <p class="card-text"><span>Capacity:</span> ${evento.capacity}</p>
-                <p class="card-text"><span>Estimate:</span> ${evento.estimate || 'undefined'}</p>
-                <p class="card-text"><span>Assistance:</span> ${evento.assistance || 'undefined'}</p>
-            </div>
-            <div class="detailsprice d-flex flex-row-reverse justify-content-around align-items-end">
-              <a href="Details.html?id=${evento._id}" class="btn btn-primary">Details</a>
-              <h6 class="h6 d-flex align-items-center">$ ${evento.price}</h6>
-          </div>
         `;
-        contenedor2.appendChild(divTarjeta);
-    });
-
-    // Si no se encontraron eventos
-    if (data.length === 0) {
-        contenedor2.innerHTML = '<p>No se encontraron eventos que coincidan con los criterios de búsqueda.</p>';
+    } else {
+        // Manejar el caso cuando no se encuentre el evento
+        const detalleEventoContainer = document.getElementById('detalle-evento');
+        detalleEventoContainer.innerHTML = '<p>Evento no encontrado.</p>';
     }
-}
-
-// Función para manejar la búsqueda en tiempo real
-function manejarBusquedaEnTiempoReal() {
-    const searchTerm = document.getElementById('search-input').value;
-    const eventosFiltrados = filtrarPorNombre(searchTerm);
-    pintarTodasLasTarjetas(eventosFiltrados);
-}
-
-// Event listener para el campo de búsqueda
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('input', manejarBusquedaEnTiempoReal);
-
-    // Mostrar todas las tarjetas al cargar la página
-    pintarTodasLasTarjetas(CardsData);
-});
-
- // Función para filtrar tarjetas por categoría y eventos futuros
-function filtrarPorCategoriaYFuturos() {
-  const checkboxes = document.querySelectorAll('.form-check-input');
-  const categoriasSeleccionadas = Array.from(checkboxes)
-      .filter(checkbox => checkbox.checked)
-      .map(checkbox => checkbox.value);
-
-  const fechaActual = new Date('2023-01-01'); // Fecha actual, representada como un objeto Date
-
-  if (categoriasSeleccionadas.length === 0) {
-      // Si no se selecciona ninguna categoría, filtrar solo eventos futuros
-      const tarjetasFiltradas = CardsData.filter(evento => {
-          const fechaEvento = new Date(evento.date); // Convertir la fecha del evento a Date
-          return fechaEvento > fechaActual; // Comparar si la fecha del evento es posterior a la fecha actual
-      });
-      pintarTodasLasTarjetas(tarjetasFiltradas);
-  } else {
-      // Filtrar tarjetas según categorías seleccionadas y eventos futuros
-      const tarjetasFiltradas = CardsData.filter(evento =>
-          categoriasSeleccionadas.includes(evento.category) &&
-          new Date(evento.date) > fechaActual
-      );
-      pintarTodasLasTarjetas(tarjetasFiltradas);
-  }
-}
-
-// Event listener para los checkboxes
-document.addEventListener('DOMContentLoaded', () => {
-  const checkboxes = document.querySelectorAll('.form-check-input');
-  checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', filtrarPorCategoriaYFuturos);
-  }); 
 });
