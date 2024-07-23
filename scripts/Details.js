@@ -196,12 +196,9 @@ const CardsData = [
   document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const eventId = urlParams.get('id');
-
-    // Lógica para obtener y mostrar los detalles del evento con el eventId
     const eventoDetalle = CardsData.find(evento => evento._id === eventId);
-
     if (eventoDetalle) {
-        // Mostrar los detalles del evento encontrado
+       
         const detalleEventoContainer = document.getElementById('detalle-evento');
         detalleEventoContainer.innerHTML = `
             <div class="card">
@@ -225,7 +222,7 @@ const CardsData = [
             </div>
         `;
     } else {
-        // Manejar el caso cuando no se encuentre el evento
+        
         const detalleEventoContainer = document.getElementById('detalle-evento');
         detalleEventoContainer.innerHTML = '<p>Evento no encontrado.</p>';
     }

@@ -193,128 +193,107 @@ const CardsData = [
     }
   ]; 
 
-  const opciones = ['Food Fair', 'Museum', 'Costume Party', 'Music Concert', 'Category'];
+  const opciones = ['Food Fair', 'Museum', 'Costume Party', 'Music Concert', 'Category', 'Race', 'Book Exchange', 'Cinema'];
 
-// Generar dinámicamente los checkboxes
-const checkboxContainer = document.getElementById('checkbox-container');
-opciones.forEach((opcion, index) => {
-    checkboxContainer.innerHTML += `
-        <label class="form-check form-check-inline">
-            <input type="checkbox" class="form-check-input" id="flexCheckChecked${index + 1}" value="${opcion}">
-            <span class="form-check-label">${opcion}</span>
-        </label>
-    `;
-});
-
-// Formulario de búsqueda
-const FormDeBusqueda = `
-    <form id="search-form" class="search-form">
-        <div class="d-flex justify-content-end" id="search-container">
-            <input type="text" name="search" id="search-input" placeholder="Buscar" class="form-control">
-            <button type="submit">
-                <img src="../imagenes/search.svg" alt="Lupa">
-            </button>
-            <button type="button" id="clear-button">Limpiar</button>
-        </div>
-    </form>
-`;
-checkboxContainer.insertAdjacentHTML('afterend', FormDeBusqueda);
-
-// Función para limpiar el campo de búsqueda y mostrar todas las tarjetas
-document.getElementById('clear-button').addEventListener('click', () => {
-    document.getElementById('search-input').value = '';
-    pintarTodasLasTarjetas(CardsData);
-});
-
-// Función para filtrar eventos por nombre
-function filtrarPorNombre(searchTerm) {
-    searchTerm = searchTerm.toLowerCase().trim();
-    return CardsData.filter(evento => evento.name.toLowerCase().includes(searchTerm));
-}
-
-// Función para pintar todas las tarjetas
-function pintarTodasLasTarjetas(data) {
-    const contenedor2 = document.getElementById('contenedor2');
-    contenedor2.innerHTML = ''; // Limpiar contenido previo
-
-    data.forEach(evento => {
-        const divTarjeta = document.createElement('div');
-        divTarjeta.classList.add('card',);
-        divTarjeta.innerHTML = `
-            <div class="card-header">
-               
-                <img class="card-img-top" src="${evento.image}" alt="${evento.name}">
-            </div>
-            <div class="card-body">
-                <h2 class="card-title badge text-bg-primary text-wrap d-flex justify-content-center align-items-center">${evento.name}</h2>
-                <p class="card-text"><span>Date:</span> ${evento.date}</p>
-                <p class="card-text"><span>Description:</span> ${evento.description}</p>
-                <p class="card-text"><span>Category:</span> ${evento.category}</p>
-                <p class="card-text"><span>Place:</span> ${evento.place}</p>
-                <p class="card-text"><span>Capacity:</span> ${evento.capacity}</p>
-                <p class="card-text"><span>Estimate:</span> ${evento.estimate || 'undefined'}</p>
-                <p class="card-text"><span>Assistance:</span> ${evento.assistance || 'undefined'}</p>
-            </div>
-            <div class="detailsprice d-flex flex-row-reverse justify-content-around align-items-end">
-              <a href="Details.html?id=${evento._id}" class="btn btn-primary">Details</a>
-              <h6 class="h6 d-flex align-items-center">$ ${evento.price}</h6>
+  const checkboxContainer = document.getElementById('checkbox-container');
+  opciones.forEach((opcion, index) => {
+      checkboxContainer.innerHTML += `
+          <label class="form-check form-check-inline">
+              <input type="checkbox" class="form-check-input" id="flexCheckChecked${index + 1}" value="${opcion}">
+              <span class="form-check-label">${opcion}</span>
+          </label>
+      `;
+  });
+  
+  const FormDeBusqueda = `
+      <form id="search-form" class="search-form">
+          <div class="d-flex justify-content-end" id="search-container">
+              <input type="text" name="search" id="search-input" placeholder="Buscar" class="form-control">
+              <button type="submit">
+                  <img src="../imagenes/search.svg" alt="Lupa">
+              </button>
+              <button type="button" id="clear-button">Limpiar</button>
           </div>
-        `;
-        contenedor2.appendChild(divTarjeta);
-    });
-
-    // Si no se encontraron eventos
-    if (data.length === 0) {
-        contenedor2.innerHTML = '<p>No se encontraron eventos que coincidan con los criterios de búsqueda.</p>';
-    }
-}
-
-// Función para manejar la búsqueda en tiempo real
-function manejarBusquedaEnTiempoReal() {
-    const searchTerm = document.getElementById('search-input').value;
-    const eventosFiltrados = filtrarPorNombre(searchTerm);
-    pintarTodasLasTarjetas(eventosFiltrados);
-}
-
-// Event listener para el campo de búsqueda
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('input', manejarBusquedaEnTiempoReal);
-
-    // Mostrar todas las tarjetas al cargar la página
-    pintarTodasLasTarjetas(CardsData);
-});
-
- // Función para filtrar tarjetas por categoría y eventos futuros
-function filtrarPorCategoriaYFuturos() {
-  const checkboxes = document.querySelectorAll('.form-check-input');
-  const categoriasSeleccionadas = Array.from(checkboxes)
-      .filter(checkbox => checkbox.checked)
-      .map(checkbox => checkbox.value);
-
-  const fechaActual = new Date('2023-01-01'); // Fecha actual, representada como un objeto Date
-
-  if (categoriasSeleccionadas.length === 0) {
-      // Si no se selecciona ninguna categoría, filtrar solo eventos futuros
-      const tarjetasFiltradas = CardsData.filter(evento => {
-          const fechaEvento = new Date(evento.date); // Convertir la fecha del evento a Date
-          return fechaEvento > fechaActual; // Comparar si la fecha del evento es posterior a la fecha actual
+      </form>
+  `;
+  checkboxContainer.insertAdjacentHTML('afterend', FormDeBusqueda);
+  
+  document.getElementById('clear-button').addEventListener('click', () => {
+      document.getElementById('search-input').value = '';
+      aplicarFiltrosYMostrarTarjetas();  
+  });
+  function filtrarPorNombreYDescripcion(searchTerm) {
+      searchTerm = searchTerm.toLowerCase().trim();
+      return CardsData.filter(evento => 
+          evento.name.toLowerCase().includes(searchTerm) ||
+          evento.description.toLowerCase().includes(searchTerm)
+      );
+  } 
+  function pintarTodasLasTarjetas(data) {
+      const contenedor2 = document.getElementById('contenedor2');
+      contenedor2.innerHTML = ''; 
+      const fechaActual = new Date('2023-01-01');
+      const eventosFuturos = data.filter(evento => {
+          const fechaEvento = new Date(evento.date);
+          return fechaEvento > fechaActual;
       });
-      pintarTodasLasTarjetas(tarjetasFiltradas);
-  } else {
-      // Filtrar tarjetas según categorías seleccionadas y eventos futuros
-      const tarjetasFiltradas = CardsData.filter(evento =>
-          categoriasSeleccionadas.includes(evento.category) &&
+      eventosFuturos.forEach(evento => {
+          const divTarjeta = document.createElement('div');
+          divTarjeta.classList.add('card');
+          divTarjeta.innerHTML = `
+              <div class="card-header">
+                  <img class="card-img-top" src="${evento.image}" alt="${evento.name}">
+              </div>
+              <div class="card-body">
+                  <h2 class="card-title badge text-bg-primary text-wrap d-flex justify-content-center align-items-center">${evento.name}</h2>
+                  <p class="card-text"><span>Date:</span> ${evento.date}</p>
+                  <p class="card-text"><span>Description:</span> ${evento.description}</p>
+                  <p class="card-text"><span>Category:</span> ${evento.category}</p>
+                  <p class="card-text"><span>Place:</span> ${evento.place}</p>
+                  <p class="card-text"><span>Capacity:</span> ${evento.capacity}</p>
+                  <p class="card-text"><span>Estimate:</span> ${evento.estimate || 'undefined'}</p>
+                  <p class="card-text"><span>Assistance:</span> ${evento.assistance || 'undefined'}</p>
+              </div>
+              <div class="detailsprice d-flex flex-row-reverse justify-content-around align-items-end">
+                  <a href="Details.html?id=${evento._id}" class="btn btn-primary">Details</a>
+                  <h6 class="h6 d-flex align-items-center">$ ${evento.price}</h6>
+              </div>
+          `;
+          contenedor2.appendChild(divTarjeta);
+      });
+  } 
+  function manejarBusquedaEnTiempoReal() {
+      const searchTerm = document.getElementById('search-input').value;
+      const eventosFiltrados = filtrarPorNombreYDescripcion(searchTerm);
+      pintarTodasLasTarjetas(eventosFiltrados);
+  }
+  
+  function aplicarFiltrosYMostrarTarjetas() {
+      const searchTerm = document.getElementById('search-input').value;
+      const eventosFiltradosPorBusqueda = filtrarPorNombreYDescripcion(searchTerm);
+  
+      const checkboxes = document.querySelectorAll('.form-check-input');
+      const categoriasSeleccionadas = Array.from(checkboxes)
+          .filter(checkbox => checkbox.checked)
+          .map(checkbox => checkbox.value);
+  
+      const fechaActual = new Date('2023-01-01');
+      const eventosFiltradosPorCategoriaYFecha = eventosFiltradosPorBusqueda.filter(evento =>
+          categoriasSeleccionadas.length === 0 || categoriasSeleccionadas.includes(evento.category)
+      ).filter(evento =>
           new Date(evento.date) > fechaActual
       );
-      pintarTodasLasTarjetas(tarjetasFiltradas);
-  }
-}
-
-// Event listener para los checkboxes
-document.addEventListener('DOMContentLoaded', () => {
-  const checkboxes = document.querySelectorAll('.form-check-input');
-  checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', filtrarPorCategoriaYFuturos);
-  }); 
-});
+  
+      pintarTodasLasTarjetas(eventosFiltradosPorCategoriaYFecha);
+  } 
+  document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('search-input');
+      searchInput.addEventListener('input', aplicarFiltrosYMostrarTarjetas);
+  
+      const checkboxes = document.querySelectorAll('.form-check-input');
+      checkboxes.forEach(checkbox => {
+          checkbox.addEventListener('change', aplicarFiltrosYMostrarTarjetas);
+      });
+      aplicarFiltrosYMostrarTarjetas();
+  });
+ 

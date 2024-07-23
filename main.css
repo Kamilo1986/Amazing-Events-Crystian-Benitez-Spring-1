@@ -43,7 +43,11 @@ h5 {
 #tabla {
   border: solid;
 }
-@media (max-width: 320px) {
+.highlight {
+  background-color: yellow; 
+  font-weight: bold;
+}
+ @media (max-width: 320px) {
   .social {
     width: 10vw;
   }
@@ -60,16 +64,6 @@ h5 {
     border-radius: 10rem;
     margin-top: 10px;
   }
-  #ckeckscontainers {
-    height: 50vh;
-    display: block;
-    flex-direction: column;
-  }
-  .check-group{
-    display: flex;
-    flex-direction: column;
-    height: 30vh;
-  }
 }
 @media (max-width: 375px) {
   #navcontainer {
@@ -81,17 +75,7 @@ h5 {
   .nav-item {
     border-radius: 10rem;
     margin-top: 10px;
-  }
-  #ckeckscontainers {
-    height: 50vh;
-    display: block;
-    flex-direction: column;
-  }
-  .check-group{
-    display: flex;
-    flex-direction: column;
-    height: 30vh;
-  }
+  } 
 }
 @media (max-width: 426px) {
   #navcontainer {
@@ -105,12 +89,16 @@ h5 {
     margin-top: 10px;
   }
   #ckeckscontainers {
+    align-items: center;
     display: block;
     flex-direction: column;
+    
   }
   .check-group{
     display: flex;
     flex-direction: column;
-    height: 30vh;
   }
 }
+
+
+

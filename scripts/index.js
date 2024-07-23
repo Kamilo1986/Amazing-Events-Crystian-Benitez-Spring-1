@@ -192,20 +192,19 @@ const CardsData = [
   }
 ];
 
-const opciones = ['Food Fair', 'Museum', 'Costume Party', 'Music Concert', 'Category'];
+const opciones = ['Food Fair', 'Museum', 'Costume Party', 'Music Concert', 'Category', 'Race', 'Cinema', 'Book Exchange'];
 
-// Generar dinámicamente los checkboxes
+
 const checkboxContainer = document.getElementById('checkbox-container');
 opciones.forEach((opcion, index) => {
     checkboxContainer.innerHTML += `
-        <label class="form-check form-check-inline">
+        <label class="form-check form-check-inline  ">
             <input type="checkbox" class="form-check-input" id="flexCheckChecked${index + 1}" value="${opcion}">
-            <span class="form-check-label">${opcion}</span>
+            <span class="form-check-label ">${opcion}</span>
         </label>
     `;
 });
 
-// Formulario de búsqueda
 const FormDeBusqueda = `
     <form id="search-form" class="search-form">
         <div class="d-flex justify-content-end" id="search-container">
@@ -219,22 +218,24 @@ const FormDeBusqueda = `
 `;
 checkboxContainer.insertAdjacentHTML('afterend', FormDeBusqueda);
 
-// Función para limpiar el campo de búsqueda y mostrar todas las tarjetas
 document.getElementById('clear-button').addEventListener('click', () => {
     document.getElementById('search-input').value = '';
     pintarTodasLasTarjetas(CardsData);
 });
 
-// Función para filtrar eventos por nombre
-function filtrarPorNombre(searchTerm) {
-    searchTerm = searchTerm.toLowerCase().trim();
-    return CardsData.filter(evento => evento.name.toLowerCase().includes(searchTerm));
+
+function filtrarPorNombreYDescripcion(searchTerm) {
+  searchTerm = searchTerm.toLowerCase().trim();
+  return CardsData.filter(evento => 
+      evento.name.toLowerCase().includes(searchTerm) ||
+      evento.description.toLowerCase().includes(searchTerm)
+  );
 }
 
-// Función para pintar todas las tarjetas
+
 function pintarTodasLasTarjetas(data) {
   const contenedor2 = document.getElementById('contenedor2');
-  contenedor2.innerHTML = ''; // Limpiar contenido previo
+  contenedor2.innerHTML = ''; 
 
   data.forEach(evento => {
       const divTarjeta = document.createElement('div');
@@ -261,37 +262,37 @@ function pintarTodasLasTarjetas(data) {
       `;
       contenedor2.appendChild(divTarjeta);
 
-      // Agregar evento click al botón "Details"
+      
       const detailsButton = divTarjeta.querySelector('.btn.btn-primary');
       detailsButton.addEventListener('click', () => {
-          // Redirigir a Details.html pasando el _id del evento como parámetro
+          
           window.location.href = `Details.html?id=${evento._id}`;
       });
   });
 
-  // Si no se encontraron eventos
+  
   if (data.length === 0) {
       contenedor2.innerHTML = '<p>No se encontraron eventos que coincidan con los criterios de búsqueda.</p>';
   }
 }
 
-// Función para manejar la búsqueda en tiempo real
+
 function manejarBusquedaEnTiempoReal() {
     const searchTerm = document.getElementById('search-input').value;
-    const eventosFiltrados = filtrarPorNombre(searchTerm);
+    const eventosFiltrados = filtrarPorNombreYDescripcion(searchTerm);
     pintarTodasLasTarjetas(eventosFiltrados);
 }
 
-// Event listener para el campo de búsqueda
+
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
     searchInput.addEventListener('input', manejarBusquedaEnTiempoReal);
 
-    // Mostrar todas las tarjetas al cargar la página
+    
     pintarTodasLasTarjetas(CardsData);
 });
 
-//////////////////////////////////////////////////////////////////////////////////
+
  function filtrarPorCategoria() {
   const checkboxes = document.querySelectorAll('.form-check-input');
   const categoriasSeleccionadas = Array.from(checkboxes)
@@ -299,10 +300,10 @@ document.addEventListener('DOMContentLoaded', () => {
     .map(checkbox => checkbox.value);
 
   if (categoriasSeleccionadas.length === 0) {
-    // Si no se selecciona ninguna categoría, mostrar todas las tarjetas
+   
     pintarTodasLasTarjetas(CardsData);
   } else {
-    // Filtrar tarjetas según categorías seleccionadas
+   
     const tarjetasFiltradas = CardsData.filter(evento =>
       categoriasSeleccionadas.includes(evento.category)
     );
@@ -310,14 +311,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 }
 
-// Event listener para los checkboxes
+
 document.addEventListener('DOMContentLoaded', () => {
   const checkboxes = document.querySelectorAll('.form-check-input');
   checkboxes.forEach(checkbox => {
     checkbox.addEventListener('change', filtrarPorCategoria);
   });
   
-  // Mostrar todas las tarjetas al cargar la página
+  
   pintarTodasLasTarjetas(CardsData);
 });
 
